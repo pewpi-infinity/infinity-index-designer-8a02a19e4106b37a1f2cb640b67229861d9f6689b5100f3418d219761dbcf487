@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>∞ Infinity Index - Builder</title>
+  <meta name="description" content="Professional repository index built by INDEX_BUILDER">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b0b0b;
+      color: #e6e6e6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      color: #e6e6e6;
+      padding: 2.5rem;
+      text-align: center;
+      border-bottom: 3px solid #00e5ff;
+      box-shadow: 0 4px 20px rgba(0,229,255,0.2);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header .dot {
+      color: #00e5ff;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: #00e5ff;
+      color: #0b0b0b;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    nav {
+      background: rgba(26,26,26,0.95);
+      padding: 1rem;
+      border-bottom: 1px solid rgba(0,229,255,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    nav a {
+      color: #00e5ff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    nav a:hover {
+      background: rgba(0,229,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    main {
+      background: rgba(26,26,26,0.8);
+      padding: 2.5rem;
+      border-radius: 15px;
+      border: 1px solid rgba(0,229,255,0.2);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(0,229,255,0.1) 0%, rgba(0,229,255,0.05) 100%);
+      border-radius: 15px;
+      margin-bottom: 3rem;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #00e5ff;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .search-bar {
+      position: relative;
+      margin: 2rem 0;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      background: rgba(26,26,26,0.8);
+      border: 2px solid rgba(0,229,255,0.3);
+      border-radius: 12px;
+      color: #e6e6e6;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .search-bar input:focus {
+      border-color: #00e5ff;
+      box-shadow: 0 0 20px rgba(0,229,255,0.2);
+    }
+
+    .search-bar input::placeholder {
+      color: rgba(230,230,230,0.5);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      background: rgba(26,26,26,0.6);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,229,255,0.2);
+      transition: all 0.3s;
+    }
+
+    .feature:hover {
+      background: rgba(0,229,255,0.05);
+      border-color: #00e5ff;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,229,255,0.2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature h3 {
+      color: #00e5ff;
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+
+    .feature p {
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    .status {
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .status-online {
+      color: #00ff88;
+    }
+
+    aside {
+      background: rgba(26,26,26,0.8);
+      padding: 2rem;
+      border-radius: 15px;
+      border: 1px solid rgba(0,229,255,0.2);
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+
+    .token-widget {
+      background: linear-gradient(135deg, rgba(0,229,255,0.2) 0%, rgba(0,229,255,0.1) 100%);
+      padding: 1.75rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0,229,255,0.3);
+    }
+
+    .token-widget h3 {
+      color: #00e5ff;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .token-balance {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      color: #00e5ff;
+    }
+
+    .connections h3 {
+      color: #00e5ff;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .connection-item {
+      background: rgba(0,229,255,0.05);
+      padding: 1rem;
+      margin: 0.75rem 0;
+      border-radius: 8px;
+      border-left: 3px solid #00e5ff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .connection-item:hover {
+      background: rgba(0,229,255,0.1);
+      transform: translateX(5px);
+    }
+
+    button {
+      background: #00e5ff;
+      color: #0b0b0b;
+      border: none;
+      padding: 0.875rem 1.75rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 700;
+      width: 100%;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      background: #00b8cc;
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,229,255,0.4);
+    }
+
+    footer {
+      background: rgba(26,26,26,0.95);
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 4rem;
+      border-top: 3px solid #00e5ff;
+    }
+
+    .formula {
+      margin: 0.75rem 0;
+      font-weight: 600;
+      color: #00e5ff;
+      font-size: 1rem;
+    }
+
+    footer p {
+      margin-top: 1.5rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 968px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>∞ Infinity<span class="dot">.</span></h1>
+    <p>Index Builder Machine</p>
+    <span class="badge">✅ PROPER PAGE</span>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/"><span>🏠</span> Home</a></li>
+      <li><a href="/dash-hub"><span>🪙</span> Token Hub</a></li>
+      <li><a href="/banksy"><span>🎨</span> Art Assets</a></li>
+      <li><a href="/token-mint"><span>🏭</span> Token Mint</a></li>
+      <li><a href="/pricing-engine"><span>💰</span> Pricing</a></li>
+      <li><a href="/facet-commerce"><span>🛒</span> Commerce</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <main>
+      <div class="hero">
+        <h2>Automated Index Building Machine</h2>
+        <p>Built with INDEX_BUILDER - No junky placeholders, only proper pages!</p>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="🔍 Find anything instantly across all repos..." />
+      </div>
+
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">🎛️</div>
+          <h3>Smart Index Builder</h3>
+          <p>Automatically constructs proper repository indexes with no placeholder content</p>
+          <div class="status status-online">● Active</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🪙</div>
+          <h3>Token Integration</h3>
+          <p>Earn Andy Lian Coins (ALC) for building quality pages and proper indexes</p>
+          <div class="status status-online">● Active</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <h3>Website Wiring</h3>
+          <p>Connected to dash-hub, banksy, token-mint, pricing-engine, and facet-commerce</p>
+          <div class="status status-online">● Connected</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <h3>Theme Support</h3>
+          <p>All 11 themes supported with automatic theme detection based on repo purpose</p>
+          <div class="status status-online">● Active</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h3>Instant Search</h3>
+          <p>Find anything across all connected repositories instantly with smart search</p>
+          <div class="status status-online">● Active</div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🚗</div>
+          <h3>MRW Terminal</h3>
+          <p>Mario walks across builder, cars deliver completed indexes, mushrooms generate instantly</p>
+          <div class="status status-online">● Active</div>
+        </div>
+      </section>
+    </main>
+
+    <aside>
+      <div class="token-widget">
+        <h3>🪙 Andy Lian Coin (ALC)</h3>
+        <div class="token-balance">Loading...</div>
+        <p style="opacity: 0.8; margin-bottom: 1rem;">Current Balance</p>
+        <button>View Token Economy</button>
+      </div>
+
+      <div class="connections">
+        <h3>🔗 Connected Repos</h3>
+        <div class="connection-item">
+          <span>dash-hub</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>banksy</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>token-mint</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>pricing-engine</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>facet-commerce</span>
+          <span class="status-online">● Online</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="formula">🎛️ INDEX_BUILDER + 🧱Kris🔑 = Index Authority</div>
+    <div class="formula">🪡🤓⭐ Smart weaving of content</div>
+    <div class="formula">🔗 Semantic linking</div>
+    <p>✅ NO junky indexes - Proper pages only!</p>
+    <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.6;">v1.0.0 | Built by INDEX_BUILDER</p>
+  </footer>
+
+  <script type="module">
+    // Load token balance from dash-hub
+    async function loadTokenBalance() {
+      try {
+        const response = await fetch('/dash-hub/balance');
+        if (response.ok) {
+          const data = await response.json();
+          document.querySelector('.token-balance').textContent = data.balance + ' ALC';
+        } else {
+          document.querySelector('.token-balance').textContent = '0.00 ALC';
+        }
+      } catch (err) {
+        document.querySelector('.token-balance').textContent = '0.00 ALC';
+        console.log('Token balance will load when economy hub is available');
+      }
+    }
+
+    // Search functionality
+    document.querySelector('.search-bar input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value;
+        console.log('🔍 Searching:', query);
+        // TODO: Implement cross-repo search
+        alert(`Searching for: ${query}\nCross-repo search will be available when wiring is complete.`);
+      }
+    });
+
+    // Initialize
+    loadTokenBalance();
+    setInterval(loadTokenBalance, 30000); // Refresh every 30 seconds
+  </script>
+</body>
+</html>

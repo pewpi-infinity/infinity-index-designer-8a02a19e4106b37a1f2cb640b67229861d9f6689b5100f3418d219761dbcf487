@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🍄 Mario Theme - Index Builder</title>
+  <meta name="description" content="Mario-themed repository index with token integration">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Comic Sans MS', cursive, system-ui, sans-serif;
+      background: linear-gradient(135deg, #87CEEB 0%, #4CAF50 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Header with Mario theme */
+    header {
+      background: linear-gradient(90deg, #e52521 0%, #ff6b35 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 5px solid #ffd700;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+
+    header .badge {
+      display: inline-block;
+      background: #00cc00;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(255,255,255,0.9);
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #e52521;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background: #e52521;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Main Layout */
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    main {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      color: white;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .mario-walk {
+      font-size: 4rem;
+      animation: walk 3s infinite;
+    }
+
+    @keyframes walk {
+      0%, 100% { transform: translateX(-50px); }
+      50% { transform: translateX(50px); }
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: 3px solid #ffd700;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature h3 {
+      color: #e52521;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Sidebar */
+    aside {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+
+    .token-widget {
+      background: linear-gradient(135deg, #ffd700 0%, #ff9800 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .token-balance {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+
+    .connections {
+      margin-top: 1.5rem;
+    }
+
+    .connection-item {
+      background: #f5f5f5;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .status-online {
+      color: #00cc00;
+      font-weight: bold;
+    }
+
+    /* Search Bar */
+    .search-bar {
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 1rem;
+      border: 3px solid #ffd700;
+      border-radius: 25px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: #e52521;
+      box-shadow: 0 0 10px rgba(229, 37, 33, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(255,255,255,0.9);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 4rem;
+      border-top: 5px solid #ffd700;
+    }
+
+    .formula {
+      margin: 0.5rem 0;
+      font-weight: bold;
+      color: #e52521;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🍄 Mario Theme Index</h1>
+    <p>Built by INDEX_BUILDER - Proper Pages Only!</p>
+    <span class="badge">✅ PROPER PAGE</span>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/">🏠 Home</a></li>
+      <li><a href="/dash-hub">🪙 Token Hub</a></li>
+      <li><a href="/banksy">🎨 Art Assets</a></li>
+      <li><a href="/token-mint">🏭 Token Mint</a></li>
+      <li><a href="/pricing-engine">💰 Pricing</a></li>
+      <li><a href="/facet-commerce">🛒 Commerce</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <main>
+      <div class="hero">
+        <div class="mario-walk">🍄</div>
+        <h2>Automated Index Building Machine</h2>
+        <p>Mario walks across the index builder - Let's-a-go!</p>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="🔍 Find anything instantly across all repos..." />
+      </div>
+
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">🎛️</div>
+          <h3>Smart Index Builder</h3>
+          <p>Automatically constructs proper indexes with no placeholders</p>
+          <span class="status-online">● Active</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🪙</div>
+          <h3>Token Integration</h3>
+          <p>Earn Andy Lian Coins for building quality pages</p>
+          <span class="status-online">● Active</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <h3>Website Wiring</h3>
+          <p>Connected to dash-hub, banksy, token-mint, and more</p>
+          <span class="status-online">● Connected</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <h3>Theme Support</h3>
+          <p>All 11 themes supported with auto-detection</p>
+          <span class="status-online">● Active</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h3>Instant Search</h3>
+          <p>Find anything across all connected repos</p>
+          <span class="status-online">● Active</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🚗</div>
+          <h3>MRW Terminal</h3>
+          <p>Mario walks, cars deliver, mushrooms generate instantly</p>
+          <span class="status-online">● Active</span>
+        </div>
+      </section>
+    </main>
+
+    <aside>
+      <div class="token-widget">
+        <h3>🪙 Andy Lian Coin (ALC)</h3>
+        <div class="token-balance">Loading...</div>
+        <p>Earn tokens by building proper pages!</p>
+        <button style="background: white; color: #ff9800; border: none; padding: 0.75rem 1.5rem; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 1rem; width: 100%;">View Economy</button>
+      </div>
+
+      <div class="connections">
+        <h3>🔗 Connected Repos</h3>
+        <div class="connection-item">
+          <span>dash-hub</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>banksy</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>token-mint</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>pricing-engine</span>
+          <span class="status-online">● Online</span>
+        </div>
+        <div class="connection-item">
+          <span>facet-commerce</span>
+          <span class="status-online">● Online</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="formula">🎛️ INDEX_BUILDER + 🧱Kris🔑 = Index Authority</div>
+    <div class="formula">🪡🤓⭐ Smart weaving of content</div>
+    <div class="formula">🔗 Semantic linking</div>
+    <p style="margin-top: 1rem; color: #666;">✅ NO junky indexes - Proper pages only!</p>
+    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #999;">🟢 Luigi says: "Mamma mia! That's a proper page! 👍"</p>
+  </footer>
+
+  <script type="module">
+    // Load token balance
+    async function loadTokenBalance() {
+      try {
+        const response = await fetch('/dash-hub/balance');
+        if (response.ok) {
+          const data = await response.json();
+          document.querySelector('.token-balance').textContent = data.balance + ' ALC';
+        }
+      } catch (err) {
+        console.log('Token balance will be loaded when dash-hub is available');
+      }
+    }
+    
+    loadTokenBalance();
+
+    // Search functionality
+    document.querySelector('.search-bar input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const query = e.target.value;
+        console.log('Searching:', query);
+        // Implement search across repos
+      }
+    });
+  </script>
+</body>
+</html>
