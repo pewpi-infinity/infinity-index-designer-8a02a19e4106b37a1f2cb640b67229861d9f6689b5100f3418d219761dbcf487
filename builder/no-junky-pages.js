@@ -200,16 +200,54 @@ class NoJunkyPages {
   }
 
   /**
-   * Extract text content from HTML
+   * Extract text content from HTML for quality metrics analysis only.
+   * 
+   * SECURITY: This extracts text for analysis (word counting) ONLY.
+   * Output is never rendered as HTML. Not for sanitization.
    */
   extractTextContent(html) {
-    // Simple text extraction (strips tags)
-    return html
-      .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
-      .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
-      .replace(/<[^>]+>/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
+    // For quality metrics: extract visible text to count words
+    // Use a simple state machine to skip tag content
+    
+    let result = '';
+    let inTag = false;
+    let inScript = false;
+    let inStyle = false;
+    let tagBuffer = '';
+    
+    for (let i = 0; i < html.length; i++) {
+      const char = html[i];
+      
+      if (char === '<') {
+        inTag = true;
+        tagBuffer = '<';
+      } else if (char === '>' && inTag) {
+        tagBuffer += '>';
+        inTag = false;
+        
+        // Check if this starts/ends a script or style block
+        const lowerTag = tagBuffer.toLowerCase();
+        if (lowerTag.includes('<script')) {
+          inScript = true;
+        } else if (lowerTag.includes('</script')) {
+          inScript = false;
+        } else if (lowerTag.includes('<style')) {
+          inStyle = true;
+        } else if (lowerTag.includes('</style')) {
+          inStyle = false;
+        }
+        
+        tagBuffer = '';
+      } else if (inTag) {
+        tagBuffer += char;
+      } else if (!inScript && !inStyle) {
+        // Add character to result if we're not in a tag, script, or style
+        result += char;
+      }
+    }
+    
+    // Normalize whitespace
+    return result.replace(/\s+/g, ' ').trim();
   }
 
   /**
