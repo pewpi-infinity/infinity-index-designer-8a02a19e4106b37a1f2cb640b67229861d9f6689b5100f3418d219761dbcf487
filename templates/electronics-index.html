@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🔌 Electronics Lab - Index Builder</title>
+  <meta name="description" content="Electronics lab-themed repository index with circuit design">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Courier New', monospace, sans-serif;
+      background: #0a0a0a;
+      color: #00ff00;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(90deg, #001a00 0%, #003300 100%);
+      color: #00ff00;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 3px solid #00ff00;
+      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #00ff00;
+      letter-spacing: 3px;
+    }
+
+    nav {
+      background: rgba(0,26,0,0.9);
+      padding: 1rem;
+      border-bottom: 1px solid #00ff00;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #00ff00;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 1px solid #00ff00;
+      transition: all 0.3s;
+    }
+
+    nav a:hover {
+      background: #00ff00;
+      color: #000;
+      box-shadow: 0 0 10px #00ff00;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+
+    main {
+      background: rgba(0,50,0,0.3);
+      padding: 2rem;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+    }
+
+    .circuit-pattern {
+      text-align: center;
+      padding: 2rem;
+      font-size: 3rem;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .feature {
+      background: rgba(0,50,0,0.5);
+      padding: 1.5rem;
+      border: 2px solid #00ff00;
+      transition: all 0.3s;
+    }
+
+    .feature:hover {
+      box-shadow: 0 0 20px rgba(0,255,0,0.5);
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    aside {
+      background: rgba(0,50,0,0.3);
+      padding: 1.5rem;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+    }
+
+    .token-widget {
+      background: rgba(0,100,0,0.5);
+      padding: 1.5rem;
+      border: 1px solid #00ff00;
+      margin-bottom: 1.5rem;
+    }
+
+    .token-balance {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      text-shadow: 0 0 10px #00ff00;
+    }
+
+    .connection-item {
+      background: rgba(0,50,0,0.5);
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-left: 3px solid #00ff00;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .status-online {
+      color: #00ff00;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0.3; }
+    }
+
+    input {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(0,50,0,0.5);
+      border: 2px solid #00ff00;
+      color: #00ff00;
+      font-family: 'Courier New', monospace;
+      margin: 2rem 0;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(0,255,0,0.5);
+    }
+
+    button {
+      background: #00ff00;
+      color: #000;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Courier New', monospace;
+      width: 100%;
+      margin-top: 1rem;
+      transition: all 0.3s;
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px rgba(0,255,0,0.8);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: rgba(0,26,0,0.9);
+      padding: 2rem;
+      text-align: center;
+      margin-top: 4rem;
+      border-top: 3px solid #00ff00;
+    }
+
+    @media (max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🔌 ELECTRONICS LAB</h1>
+    <p>[ INDEX_BUILDER v1.0.0 ]</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="/">[ HOME ]</a></li>
+      <li><a href="/dash-hub">[ TOKEN HUB ]</a></li>
+      <li><a href="/banksy">[ ASSETS ]</a></li>
+      <li><a href="/token-mint">[ MINT ]</a></li>
+      <li><a href="/pricing-engine">[ PRICING ]</a></li>
+      <li><a href="/facet-commerce">[ COMMERCE ]</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <main>
+      <div class="circuit-pattern">⚡ 🔌 ⚡</div>
+      <h2 style="text-align: center; margin-bottom: 2rem;">LAB BENCH INTERFACE</h2>
+
+      <input type="text" placeholder="[SEARCH] Find components and circuits..." />
+
+      <section class="features">
+        <div class="feature">
+          <div class="feature-icon">🎛️</div>
+          <h3>INDEX BUILDER</h3>
+          <p>Automated circuit design and index construction</p>
+          <span class="status-online">● ACTIVE</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🪙</div>
+          <h3>TOKEN SYSTEM</h3>
+          <p>ALC rewards for quality components</p>
+          <span class="status-online">● ACTIVE</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔗</div>
+          <h3>WIRING</h3>
+          <p>Hydrogen bonds to all repositories</p>
+          <span class="status-online">● CONNECTED</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🎨</div>
+          <h3>THEMES</h3>
+          <p>11 theme configurations available</p>
+          <span class="status-online">● ACTIVE</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h3>SEARCH</h3>
+          <p>Instant component lookup</p>
+          <span class="status-online">● ACTIVE</span>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>POWER</h3>
+          <p>High-voltage proper page generation</p>
+          <span class="status-online">● ACTIVE</span>
+        </div>
+      </section>
+    </main>
+
+    <aside>
+      <div class="token-widget">
+        <h3>🪙 ANDY LIAN COIN</h3>
+        <div class="token-balance">...</div>
+        <p>[ ALC BALANCE ]</p>
+        <button>VIEW ECONOMY</button>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: 1rem;">🔗 CONNECTIONS</h3>
+        <div class="connection-item">
+          <span>dash-hub</span>
+          <span class="status-online">● ON</span>
+        </div>
+        <div class="connection-item">
+          <span>banksy</span>
+          <span class="status-online">● ON</span>
+        </div>
+        <div class="connection-item">
+          <span>token-mint</span>
+          <span class="status-online">● ON</span>
+        </div>
+        <div class="connection-item">
+          <span>pricing-engine</span>
+          <span class="status-online">● ON</span>
+        </div>
+        <div class="connection-item">
+          <span>facet-commerce</span>
+          <span class="status-online">● ON</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div style="margin: 0.5rem 0;">[ INDEX_BUILDER + Kris🔑 = Index Authority ]</div>
+    <div style="margin: 0.5rem 0;">[ Smart circuit weaving ]</div>
+    <div style="margin: 0.5rem 0;">[ Semantic linking active ]</div>
+    <p style="margin-top: 1rem;">✅ NO junky pages - Proper circuits only!</p>
+  </footer>
+
+  <script type="module">
+    async function loadTokenBalance() {
+      try {
+        const response = await fetch('/dash-hub/balance');
+        if (response.ok) {
+          const data = await response.json();
+          document.querySelector('.token-balance').textContent = data.balance + ' ALC';
+        }
+      } catch (err) {
+        document.querySelector('.token-balance').textContent = '0.00 ALC';
+      }
+    }
+    loadTokenBalance();
+  </script>
+</body>
+</html>

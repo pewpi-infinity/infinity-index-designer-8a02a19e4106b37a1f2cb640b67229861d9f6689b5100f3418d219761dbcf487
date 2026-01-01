@@ -1,0 +1,51 @@
+{
+  "mission": "Build PROPER pages for every repo",
+  "identity": "INDEX_BUILDER",
+  "version": "1.0.0",
+  "never": "junky_placeholders",
+  "always": "full_featured_pages",
+  
+  "builds": {
+    "navigation": "smart_menu_system",
+    "content": "actual_useful_information",
+    "links": "connections_to_all_repos",
+    "search": "find_anything_instantly",
+    "tokens": "display_economy_status",
+    "themes": "all_11_theme_support"
+  },
+  
+  "themes": [
+    "mario",
+    "electronics",
+    "token-wallet",
+    "lab-bench",
+    "coin-mint",
+    "art-gallery",
+    "commerce",
+    "dash-hub",
+    "pricing",
+    "terminal",
+    "default"
+  ],
+  
+  "mrw_terminal": {
+    "mario_walks": true,
+    "cars_deliver": true,
+    "mushroom_instant": true,
+    "luigi_encourages": "proper_pages_only"
+  },
+  
+  "token_formulas": [
+    "INDEX_BUILDER + Kris🔑 = Index Authority",
+    "🪡🤓⭐ Smart weaving of content",
+    "🔗 Semantic linking"
+  ],
+  
+  "quality_rules": {
+    "no_placeholders": true,
+    "full_featured": true,
+    "real_content": true,
+    "interactive": true,
+    "connected": true
+  }
+}

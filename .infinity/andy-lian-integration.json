@@ -1,0 +1,40 @@
+{
+  "token_name": "Andy Lian Coin",
+  "token_symbol": "ALC",
+  "integration_version": "1.0.0",
+  
+  "earnings": {
+    "build_index": 10,
+    "proper_page": 5,
+    "theme_support": 3,
+    "wiring_connection": 2,
+    "quality_bonus": 5
+  },
+  
+  "display_features": {
+    "show_balance": true,
+    "show_transactions": true,
+    "show_economy_status": true,
+    "show_connected_repos": true,
+    "show_wiring_status": true
+  },
+  
+  "connections": [
+    "dash-hub",
+    "banksy",
+    "token-mint",
+    "pricing-engine",
+    "facet-commerce"
+  ],
+  
+  "hydrogen_bonds": "all_connections",
+  "updates": "propagate_via_domino",
+  "documentation": "multi_location_backup",
+  
+  "token_hub": {
+    "url": "/dash-hub",
+    "economy_endpoint": "/dash-hub/economy",
+    "balance_endpoint": "/dash-hub/balance",
+    "transactions_endpoint": "/dash-hub/transactions"
+  }
+}
